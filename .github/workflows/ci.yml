@@ -17,7 +17,7 @@ jobs:
               run: echo "Hello, Actions!"
 
             - name: Spill the beans
-              run: echo "$THE_SUPER_SECRET"
+              run: echo "${{ secrets.THE_SUPER_SECRET }}"
 
     test:
         runs-on: ${{ matrix.os }}
