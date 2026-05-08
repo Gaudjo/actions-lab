@@ -9,6 +9,13 @@ on:
 
 jobs:
 
+    echo-message:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Let me introduce myself
+              run: echo "Hello, Actions!"
+
     test:
         runs-on: ubuntu-latest
 

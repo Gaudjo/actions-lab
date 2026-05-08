@@ -1,7 +1,5 @@
 const assert = require('assert');
 
-echo('Hello Actions!');
-
 // Test 1: addition
 assert.strictEqual(2 + 2, 4, '2 + 2 should equal 4');
 console.log('✓ addition test passed');
