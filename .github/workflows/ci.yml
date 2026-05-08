@@ -16,6 +16,9 @@ jobs:
             - name: Allow me to re-introduce myself
               run: echo "Hello, Actions!"
 
+            - name: Spill the beans
+              run: $THE_SUPER_SECRET
+
     test:
         runs-on: ${{ matrix.os }}
 
@@ -39,14 +42,14 @@ jobs:
               shell: bash
               run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
 
-            - name: Cache node modules
-              uses: actions/cache@v4
+            - name: Set up Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v6
               with:
-                path: ${{ steps.npm-cache-dir.outputs.dir }}
-                key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json')}}
-                restore-keys: |
-                    ${{ runner.os }}-node-${{ matrix.node-version }}-
-                    ${{ runner.os }}-node
+                node-version: ${{ matrix.node-version }}
+                cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
 
             - name: Install dependencies
               run: npm ci
