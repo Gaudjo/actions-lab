@@ -18,7 +18,7 @@ const buildInfo = {
 };
 
 fs.writeFileSync(
-    path.join(distDir, 'buildinfo.json'),
+    path.join(distDir, 'build-info.json'),
     JSON.stringify(buildInfo, null, 2)
 );
 
